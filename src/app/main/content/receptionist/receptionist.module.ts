@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../../../core/modules/shared.module';
 
-import { ReceptionistComponent,ReceptionistDialog } from './Receptionist.component';
+import { ReceptionistComponent,ReceptionistDialog } from './receptionist.component';
 
 const routes = [
     {
