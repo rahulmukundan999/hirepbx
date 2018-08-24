@@ -1,0 +1,27 @@
+<form #myForm="ngForm" >
+        <h2 mat-dialog-title>Add Extensions</h2>
+        
+       <mat-form-field>
+            <input matInput [(ngModel)]="extensionno" placeholder="User Extension" name="extensionno" required>
+            <mat-error ng-show="myForm.extension.$touched && myForm.extension.$invalid">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+             <input matInput [(ngModel)]="displayname"  placeholder="Display Name" name="displayname">
+         </mat-form-field>
+         <mat-form-field>
+                <input matInput [(ngModel)]="outboundcid"  placeholder="Outbound CID" name="outboundcid">
+            </mat-form-field>
+         <mat-form-field>
+                <input matInput [(ngModel)]="password" placeholder="password" name="password">
+                <mat-error ng-show="myForm.password.$touched && myForm.password.$invalid" required>Required</mat-error>
+                 </mat-form-field>
+         <mat-form-field>
+             <input matInput [(ngModel)]="email"  placeholder="Email" name="email">
+         </mat-form-field>
+      
+    <div mat-dialog-actions >
+      <button mat-button (click)="onNoClick()">Exit</button>
+      <button mat-button (click)="addExtension()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
+    </div>
+    </form>
+    

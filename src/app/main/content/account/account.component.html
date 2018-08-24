@@ -1,0 +1,45 @@
+<div class="class1">
+  <mat-card>
+  <button mat-raised-button (click)="openDialog()">Add</button>
+  <br>
+  <br>
+      <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+      </mat-card>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+      <ng-container matColumnDef="firstname">
+<mat-header-cell  *matHeaderCellDef>First Name</mat-header-cell>
+<mat-cell *matCellDef="let user">{{user.firstname}}</mat-cell>
+</ng-container>  
+<ng-container matColumnDef="lastname">
+  <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+  <mat-cell *matCellDef="let user">{{user.lastname}}</mat-cell>
+  </ng-container>  
+  <ng-container matColumnDef="mob">
+    <mat-header-cell *matHeaderCellDef>Mobile</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{user.mob}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="mob2">
+        <mat-header-cell *matHeaderCellDef>Mobile2</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.mob2}}</mat-cell>
+        </ng-container>  
+        <ng-container matColumnDef="home">
+            <mat-header-cell *matHeaderCellDef>Home</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.home}}</mat-cell>
+            </ng-container>  
+            <ng-container matColumnDef="home2">
+                <mat-header-cell *matHeaderCellDef>Home2</mat-header-cell>
+                <mat-cell *matCellDef="let user">{{user.home2}}</mat-cell>
+                </ng-container>  
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+      <mat-cell *matCellDef="let user"><input type="submit" value="Delete"  (click)="deleteContact(user._id)"></mat-cell>
+      </ng-container>    
+<mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></mat-header-row>
+<mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
+    </mat-table>
+    </div>
+
+      

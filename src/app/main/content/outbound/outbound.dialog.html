@@ -1,0 +1,25 @@
+<form #myForm="ngForm" >
+        <h2 mat-dialog-title>Add Outbond</h2>
+        
+       <mat-form-field>
+            <input matInput [(ngModel)]="name" placeholder="Name" name="name" required>
+            <mat-error ng-show="myForm.extension.$touched && myForm.extension.$invalid">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+             <input matInput [(ngModel)]="dial"  placeholder="Dial Prefix" name="dial">
+         </mat-form-field>
+         <mat-form-field>
+                <input matInput [(ngModel)]="dialpattern"  placeholder="Dial Pattern" name="dialpattern">
+            </mat-form-field>
+         <mat-form-field>
+                <input matInput [(ngModel)]="callerid" placeholder="CallerId" name="callerid">
+                <mat-error ng-show="myForm.password.$touched && myForm.password.$invalid" required>Required</mat-error>
+                 </mat-form-field>
+                
+       
+    <div mat-dialog-actions >
+      <button mat-button (click)="onNoClick()">Exit</button>
+      <button mat-button (click)="addContact()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
+    </div>
+    </form>
+    

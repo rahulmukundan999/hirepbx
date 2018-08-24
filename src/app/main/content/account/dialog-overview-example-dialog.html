@@ -1,0 +1,56 @@
+<form #myForm="ngForm" >
+    <h2 mat-dialog-title>Add Contact</h2>
+   <mat-form-field>
+        <input matInput [(ngModel)]="firstname" placeholder="First Name" name="firstname" required>
+        <mat-error ng-show="myForm.firstname.$touched && myForm.firstname.$invalid">Required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+         <input matInput [(ngModel)]="lastname"  placeholder="Last Name" name="lastname">
+     </mat-form-field>
+     <mat-form-field>
+         <input matInput [(ngModel)]="company"  placeholder="Company" name="company">
+     </mat-form-field>
+     <mat-form-field>
+    <input matInput [(ngModel)]="mob" placeholder="Mobile" name="mob" required>
+    <mat-error ng-show="myForm.mobile.$touched && myForm.mobile.$invalid" required>Required</mat-error>
+     </mat-form-field>
+     <mat-form-field>
+                        <input matInput [(ngModel)]="mob2" placeholder="Mobile 2" name="mob2">
+       </mat-form-field>
+      <mat-form-field>
+                            <input matInput [(ngModel)]="home" placeholder="Home" name="home">
+         </mat-form-field>
+      <mat-form-field>
+                                <input matInput [(ngModel)]="home2" placeholder="Home 2" name="home2">
+                              </mat-form-field>
+                              <mat-form-field>
+                                    <input matInput [(ngModel)]="business" placeholder="Business" name="business">
+                                  </mat-form-field>
+                                  <mat-form-field>
+                                        <input matInput [(ngModel)]="business2" placeholder="Business 2" name="business2">
+                                      </mat-form-field>
+                                      <mat-form-field>
+                                            <input matInput [(ngModel)]="email" placeholder="Email" name="email">
+                                          </mat-form-field>
+                                          <mat-form-field>
+                                                <input matInput [(ngModel)]="other" placeholder="Other" name="other">
+                                              </mat-form-field>                               
+                                              <mat-form-field>
+                                                    <input matInput [(ngModel)]="bfax" placeholder="Business Fax" name="bfax">
+                                                  </mat-form-field>
+                                                  <mat-form-field>
+                                                        <input matInput [(ngModel)]="hfax" placeholder="Home Fax" name="hfax">
+                                                      </mat-form-field>
+                                                      <mat-form-field>
+                                                            <input matInput [(ngModel)]="ofax" placeholder="Other" name="ofax">
+                                                          </mat-form-field>
+
+                    
+
+
+
+<div mat-dialog-actions >
+  <button mat-button (click)="onNoClick()">Exit</button>
+  <button mat-button (click)="addContact()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
+</div>
+</form>

@@ -1,0 +1,28 @@
+
+  <div class="class1">
+<h1 align="center"><strong>Extensions</strong></h1>
+<h2 align="center">
+<button mat-raised-button (click)="openDialog()">Add</button>
+</h2>
+  
+
+
+  <table>
+         <tr>
+            <th>Extension</th>
+            <th>Display Name</th>
+            <th>OutBound CID</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+      <tr *ngFor="let extension of extensions">
+          <td>{{extension.extensionno}}</td>
+          <td>{{extension.displayname}}</td>
+          <td>{{extension.outboundcid}}</td>
+          <td>{{extension.password}}</td>
+          <td>{{extension.email}}</td>
+          <td><input type="submit" value="Delete"  (click)="deleteExtension(extension._id)"></td>
+        </tr>
+      </table>
+    </div>

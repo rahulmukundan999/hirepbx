@@ -1,0 +1,25 @@
+<form #myForm="ngForm" >
+        <h2 mat-dialog-title>Add Inbond</h2>
+        
+       <mat-form-field>
+            <input matInput [(ngModel)]="didnumber" placeholder="DID Number" name="didnumber" required>
+            <mat-error ng-show="myForm.extension.$touched && myForm.extension.$invalid">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+             <input matInput [(ngModel)]="ringgroup"  placeholder="Ring Group" name="ringgroup">
+         </mat-form-field>
+         <mat-form-field>
+                <input matInput [(ngModel)]="forext"  placeholder="Forward To Extension" name="forext">
+            </mat-form-field>
+         <mat-form-field>
+                <input matInput [(ngModel)]="formob" placeholder="Forward To Mobile" name="formob">
+                <mat-error ng-show="myForm.password.$touched && myForm.password.$invalid" required>Required</mat-error>
+                 </mat-form-field>
+                
+       
+    <div mat-dialog-actions >
+      <button mat-button (click)="onNoClick()">Exit</button>
+      <button mat-button (click)="addContact()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
+    </div>
+    </form>
+    
