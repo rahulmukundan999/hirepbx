@@ -1,12 +1,19 @@
 <div class="class1">
-  <mat-card>
-  <button mat-raised-button (click)="openDialog()">Add</button>
-  <br>
-  <br>
-      <mat-form-field>
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-        </mat-form-field>
-      </mat-card>
+<div style="position:relative;background-color:#00BFFF;  left:0px; top:0px; width:100%; height:200px; z-index:0">
+  <div style="height:100%;width:100%;padding-left:5%;padding-top:6%;">
+    
+  <button mat-raised-button (click)="openDialog()">Add Contact</button>
+</div>
+<div>
+</div>
+      </div>
+    <div>
+      <mat-card>
+      <mat-card>
+        <mat-card-title>Contacts</mat-card-title>
+          <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Contacts">
+            </mat-form-field>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
       <ng-container matColumnDef="firstname">
@@ -40,6 +47,9 @@
 <mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></mat-header-row>
 <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
     </mat-table>
+  </mat-card>
+</mat-card>
     </div>
+  </div>
 
       

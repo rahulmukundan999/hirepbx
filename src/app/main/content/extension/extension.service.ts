@@ -25,9 +25,9 @@ addExtension(newExtension)
   map(res => res.json()));
 }
 
-deleteExtension(id)
+deleteExtension(id,extension)
 {
-  return this.http.delete('http://localhost:3000/api/extension/'+id).pipe(map(res => res.json()));
+  return this.http.delete('http://localhost:3000/api/extension/'+id+'/'+extension).pipe(map(res => res.json()));
 }
 
 

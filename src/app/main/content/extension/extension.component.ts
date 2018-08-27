@@ -43,12 +43,12 @@ export class ExtensionComponent implements OnInit {
   
       
               }
-      deleteExtension(id:any)
+      deleteExtension(id:any,extensionno:any)
   {
     if(confirm("Are you sure"))
     {
     var extensions=this.extensions;
-    this.extensionService.deleteExtension(id).subscribe(data =>{
+    this.extensionService.deleteExtension(id,extensionno).subscribe(data =>{
 
       if(data.n==1)
       {
@@ -60,6 +60,8 @@ export class ExtensionComponent implements OnInit {
           }
         }
       }
+      this.extensionService.getExtensions()
+      .subscribe(extensions => this.extensions = extensions);
     })
   }
 }
