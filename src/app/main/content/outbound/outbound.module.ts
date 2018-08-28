@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../../../core/modules/shared.module';
 
-import { OutboundComponent,OutboundDialog } from './Outbound.component';
+import { OutboundComponent,OutboundDialog } from './outbound.component';
 
 const routes = [
     {
