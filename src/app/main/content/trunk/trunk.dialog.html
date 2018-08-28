@@ -7,21 +7,21 @@
         </mat-form-field>
         <h2 mat-dialog-title>Peer Details</h2>
         <mat-form-field>
-             <input matInput [(ngModel)]="username"  placeholder="User Name" name="username">
+             <input matInput [(ngModel)]="username1"  placeholder="User Name" name="username1" [disabled]="!(value.value)">
          </mat-form-field>
          <mat-form-field>
-                <input matInput [(ngModel)]="password"  placeholder="Password" name="password">
+                <input matInput [(ngModel)]="password"  placeholder="Password" name="password" [disabled]="!(value.value)">
             </mat-form-field>
          <mat-form-field>
-                <input matInput [(ngModel)]="trunkip" placeholder="Trunk IP/Hostname" name="trunkip">
+                <input matInput [(ngModel)]="trunkip" placeholder="Trunk IP/Hostname/Port" name="trunkip">
                 <mat-error ng-show="myForm.password.$touched && myForm.password.$invalid" required>Required</mat-error>
                  </mat-form-field>
                  <mat-form-field>
-                        <mat-select placeholder="Register">
-                          <mat-option [value]="true">
+                        <mat-select placeholder="Register" #value  [(ngModel)]="register" name="register">
+                          <mat-option [value]=true>
                             True
                           </mat-option>
-                          <mat-option [value]="false">
+                          <mat-option [value]=false>
                                 False
                               </mat-option>
                         </mat-select>
@@ -29,7 +29,7 @@
        
     <div mat-dialog-actions >
       <button mat-button (click)="onNoClick()">Exit</button>
-      <button mat-button (click)="addContact()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
+      <button mat-button (click)="addTrunk()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
     </div>
     </form>
     

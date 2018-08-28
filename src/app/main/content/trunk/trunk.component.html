@@ -1,4 +1,23 @@
 <div class="class1">
 <h1 align="Center">cwcwec</h1>
 <button mat-raised-button (click)="openDialog()">Add</button>
+
+<table>
+        <tr>
+           <th>Trunk Name</th>
+           <th>User Name</th>
+           <th>Password</th>
+           <th>Trunk IP</th>
+           <th>Register</th>
+           <th>Delete</th>
+         </tr>
+     <tr *ngFor="let trunk of trunks">
+         <td>{{trunk.trunkname}}</td>
+         <td>{{trunk.username1}}</td>
+         <td>{{trunk.password}}</td>
+         <td>{{trunk.trunkip}}</td>
+         <td>{{trunk.register}}</td>
+         <td><input type="submit" value="Delete"  (click)="deleteTrunk(trunk._id)"></td>
+       </tr>
+     </table>
 </div>
