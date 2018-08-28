@@ -1,0 +1,18 @@
+<include>
+  <user id="ijij">
+    <params>
+      <param name="password" value="ijij"/>
+      <param name="vm-password" value="ijij"/>
+    </params>
+    <variables>
+      <variable name="toll_allow" value="domestic,international,local"/>
+      <variable name="accountcode" value="ijij"/>
+      <variable name="user_context" value="default"/>
+      <variable name="effective_caller_id_name" value="Extension ijij"/>
+      <variable name="effective_caller_id_number" value="ijij"/>
+      <variable name="outbound_caller_id_name" value="$${ijij}"/>
+      <variable name="outbound_caller_id_number" value="$${ijij}"/>
+      <variable name="callgroup" value="techsupport"/>
+    </variables>
+  </user>
+</include>
