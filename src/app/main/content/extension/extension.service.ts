@@ -14,20 +14,20 @@ export class ExtensionService {
 
 getExtensions()
 {
-  return this.http.get('http://localhost:3000/api/extensions').pipe (
+  return this.http.get('/api/extensions').pipe (
   map(res => res.json()));
 }
 addExtension(newExtension)
 {
   var headers = new Headers();
   headers.append('Content-Type','Application/Json');
-  return this.http.post('http://localhost:3000/api/extension',newExtension,{headers:headers}).pipe(
+  return this.http.post('/api/extension',newExtension,{headers:headers}).pipe(
   map(res => res.json()));
 }
 
 deleteExtension(id)
 {
-  return this.http.delete('http://localhost:3000/api/extension/'+id).pipe(map(res => res.json()));
+  return this.http.delete('/api/extension/'+id).pipe(map(res => res.json()));
 }
 
 
