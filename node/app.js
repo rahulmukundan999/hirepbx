@@ -3,6 +3,10 @@ var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
+var http = require('http');
+
+
+
 
 var app = express();
 
@@ -22,7 +26,6 @@ mongoose.connection.on('error',(err)=>{
 
 });
 
-const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(bodyparser.json());
@@ -35,6 +38,8 @@ app.get('/',(req,res)=>{
     res.send('Connection Established');
 });
 
-app.listen(process.env.PORT || 8080,()=>{
-    console.log('server started');
+http.createServer( function (request, response) {  
+    console.log(request);
+}).listen(3000);
+
 });
