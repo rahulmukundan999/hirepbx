@@ -22,7 +22,7 @@ mongoose.connection.on('error',(err)=>{
 
 });
 
-const port = 3000;
+const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(bodyparser.json());
@@ -35,6 +35,6 @@ app.get('/',(req,res)=>{
     res.send('Connection Established');
 });
 
-app.listen(port,()=>{
+app.listen(process.env.PORT || 8080,()=>{
     console.log('server started');
 });
