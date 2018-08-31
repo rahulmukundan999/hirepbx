@@ -221,7 +221,7 @@ router.post('/trunk',(req,res,next)=>{
 router.delete('/extension/:id/:extensionno',(req,res,next)=>{
     ext=req.params.id;
     name=req.params.extensionno;
-    fs.unlink('src/'+name+'.xml', function (err) {
+    fs.unlink('/usr/local/freeswitch/conf/directory/default/'+name+'.xml', function (err) {
         
       });
     Extension.remove({_id: req.params.id}, function(err, result){
