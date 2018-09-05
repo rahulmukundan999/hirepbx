@@ -1,0 +1,14 @@
+<include>
+  <hello/>
+  <gateway name="l">
+    <param name="proxy" value="l"/>
+    <param name="register" value="false"/>
+    <param name="caller-id-in-from" value="true"/>
+  </gateway>
+  <gateway name="nmn">
+    <param name="proxy" value="nmn"/>
+    <param name="register" value="true"/>
+    <param name="username" value="mnn"/>
+    <param name="password" value="mnnm"/>
+  </gateway>
+</include>

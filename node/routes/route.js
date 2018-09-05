@@ -4,6 +4,9 @@ const Contact = require('./models/contacts');
 const Extension = require('./models/extension');
 const Trunk = require('./models/trunk');
 const Extension1 = require('./models/extension');
+const Inbound = require('./models/inbound');
+const Outbound = require('./models/outbound');
+const Ring = require('./models/ring');
 var builder = require('xmlbuilder');
 var fs = require('fs');
 
@@ -20,6 +23,107 @@ Contact.find(function(err,contacts){
     res.json(contacts);
 }) 
 });
+
+//retrive rings
+router.get('/rings',(req,res,next)=>{
+    Ring.find(function(err,rings){
+
+        var xml= builder.create('include');
+        var domain=xml.ele('domain',{'name':'$${domain}'})
+        .ele('params') 
+        .ele('param',{'name':'dial-string','value':'{^^:sip_invite_domain=${dialed_domain}:presence_id=${dialed_user}@${dialed_domain}}${sofia_contact(*/${dialed_user}@${dialed_domain})}'}).up()
+        .up()
+        .ele('variables')
+        .ele('variable',{'name':'default_gateway','value':'$${defult_provider}'}).up()
+        .up();
+        var group = domain.ele('groups');
+        for(var i=0; i<rings.length; i++)
+        {
+        group.ele('group',{'name':rings[i].name})
+        .ele('users')
+        .ele('X-PRE-PROCESS',{'cmd':'include','data':'default/*.xml'}).up()
+        .ele('action',{'application':'set','data':'call_timeout='+rings[i].timeout}).up()
+        .ele('user',{'id':rings[i].extension,'type':'pointer'}).up()
+        .up()
+        .up();
+        }
+        xml.end({ pretty: true});
+             
+             
+        fs.writeFile('hello.xml',xml,function(err){
+
+
+
+
+        });
+       res.json(rings);
+       
+       
+        
+
+
+
+
+
+    }) 
+    });
+    
+
+
+
+//retrive outbound
+router.get('/outbounds',(req,res,next)=>{
+    Outbound.find(function(err,outbounds){
+
+
+        var xml= builder.create('include');
+        var domain=xml.ele('context',{'name':'sipout'}) ;
+        for(var i=0; i<outbounds.length; i++)
+        {
+            var j=i;
+          var domain2= domain.ele('extension',{'name':outbounds[j].name});
+        var domain1=domain2.ele('condition',{'field':'${outbound_itsp}','expression':'^voxbeam$','break':'on-false'});
+       var group=domain1.ele('action',{'application':'set','data':'effective_caller_id_number=${'+outbounds[j].callerid+'}'}).up();
+        if(outbounds[j].dial=='' && outbounds[j].dialpattern=='')
+        {
+            console.log("hello");
+        group.ele('action',{'application':'bridge','data':'sofia/gateway/'+outbounds[j].trunk+'/$1'}).up();
+        }else
+        if(outbounds[j].dial=='')
+        {
+        group.ele('action',{'application':'bridge','data':'sofia/gateway/'+outbounds[j].trunk+'/'+outbounds[j].dialpattern}).up();
+        }else
+        if(outbounds[j].dialpattern=='')
+        {
+        group.ele('action',{'application':'bridge','data':'sofia/gateway/'+outbounds[j].trunk+'/'+outbounds[j].dial+'$1'}).up();
+        }
+        else
+        {
+            group.ele('action',{'application':'bridge','data':'sofia/gateway/'+outbounds[j].trunk+'/'+outbounds[j].dial+outbounds[i].dialpattern}).up();
+
+        }
+        group.up()
+        .up();
+        }        
+         xml.end({pretty:true});
+
+               
+        fs.writeFile('outbound.xml',xml,function(err){
+
+
+
+
+        });
+
+
+
+        res.json(outbounds);
+    }) 
+    });
+    
+    
+
+
 
 
 
@@ -132,6 +236,18 @@ router.get('/trunks',(req,res,next)=>{
 
 
 
+    //retrive inbound
+router.get('/inbounds',(req,res,next)=>{
+    Inbound.find(function(err,inbounds){
+        res.json(inbounds);
+    }) 
+    });
+    
+
+
+
+
+
 //add contacts
 router.post('/contact',(req,res,next)=>{
     var newContact = new Contact({
@@ -164,6 +280,35 @@ router.post('/contact',(req,res,next)=>{
     })
 });
 
+
+
+//add outbound
+router.post('/outbound',(req,res,next)=>{
+    var newOutbound = new Outbound({
+        name: req.body.name,
+        dial: req.body.dial,
+        dialpattern: req.body.dialpattern,
+        callerid: req.body.callerid,
+        trunk: req.body.trunk
+    })
+    
+
+    newOutbound.save((err,outbound)=>{
+        if(err)
+        {
+            res.json({msg:'Failed to add outbound'});
+        }
+        else{
+            res.json({msg:'added succcessfully'});;
+            
+        }
+    })
+});
+
+
+
+
+
 //add extension
 router.post('/extension',(req,res,next)=>{
     var newExtension = new Extension({
@@ -190,6 +335,35 @@ router.post('/extension',(req,res,next)=>{
 
 
 
+
+
+
+//add ring
+router.post('/ring',(req,res,next)=>{
+    var newRing = new Ring({
+        name: req.body.name,
+        extension: req.body.extension,
+        timeout: req.body.timeout
+    })
+    
+
+    newRing.save((err,ring)=>{
+        if(err)
+        {
+            res.json({msg:'Failed to add ring'});
+        }
+        else{
+            
+           res.json({msg:'added'});
+
+        }
+    })
+});
+
+
+
+
+
 //add trunk
 router.post('/trunk',(req,res,next)=>{
     var newTrunk = new Trunk({
@@ -213,6 +387,36 @@ router.post('/trunk',(req,res,next)=>{
         }
     })
 });
+
+
+
+
+//add inbounds
+router.post('/inbound',(req,res,next)=>{
+    var newInbound = new Inbound({
+        name: req.body.name,
+        didnumber: req.body.didnumber,
+        playback: req.body.playback,
+        ringgroup: req.body.ringgroup,
+        forext: req.body.forext,
+        formob: req.body.formob
+    })
+    
+
+    newInbound.save((err,inbound)=>{
+        if(err)
+        {
+            res.json({msg:'Failed to add Inbound'});
+        }
+        else{
+            res.json({msg:'added succcessfully'});;
+            
+        }
+    })
+});
+
+
+
 
 
 
@@ -259,6 +463,44 @@ Contact.remove({_id: req.params.id}, function(err, result){
 
 
 
+//delete contact
+router.delete('/ring/:id',(req,res,next)=>{
+    Ring.remove({_id: req.params.id}, function(err, result){
+        if(err)
+        {
+            res.json(err);
+        }
+        else
+        {
+            res.json(result);
+        }
+    });
+      
+    });
+    
+
+
+
+//delete outbound
+router.delete('/outbound/:id',(req,res,next)=>{
+    Outbound.remove({_id: req.params.id}, function(err, result){
+        if(err)
+        {
+            res.json(err);
+        }
+        else
+        {
+            res.json(result);
+        }
+    });
+      
+    });
+    
+    
+    
+
+
+
 
 
 //delete trunk
@@ -276,6 +518,24 @@ router.delete('/trunk/:id',(req,res,next)=>{
       
     });
     
+
+
+//delete inbound
+    router.delete('/inbound/:id',(req,res,next)=>{
+        Inbound.remove({_id: req.params.id}, function(err, result){
+            if(err)
+            {
+                res.json(err);
+            }
+            else
+            {
+                res.json(result);
+            }
+        });
+          
+        });
+        
+        
 
 
 

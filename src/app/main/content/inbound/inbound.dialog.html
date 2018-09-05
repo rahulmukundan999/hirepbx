@@ -1,25 +1,31 @@
 <form #myForm="ngForm" >
-        <h2 mat-dialog-title>Add Inbond</h2>
-        
+        <h2 mat-dialog-title>Add Inbound</h2>
+        <mat-form-field>
+            <input matInput [(ngModel)]="name"  placeholder="Name" name="name">
+        </mat-form-field>
        <mat-form-field>
             <input matInput [(ngModel)]="didnumber" placeholder="DID Number" name="didnumber" required>
             <mat-error ng-show="myForm.extension.$touched && myForm.extension.$invalid">Required</mat-error>
         </mat-form-field>
         <mat-form-field>
-             <input matInput [(ngModel)]="ringgroup"  placeholder="Ring Group" name="ringgroup">
+            <input matInput [(ngModel)]="playback"  placeholder="PlayBack" name="playback">
+        </mat-form-field>
+        <mat-form-field>
+             <input matInput [(ngModel)]="ringgroup"  placeholder="Ring Group" (ngModelChange)="textAreaEmpty()" name="ringgroup" [disabled]="disable">
          </mat-form-field>
          <mat-form-field>
-                <input matInput [(ngModel)]="forext"  placeholder="Forward To Extension" name="forext">
+             <mat-select [(ngModel)]="forext" name="forext" placeholder="Extension">
+           <mat-option *ngFor="let extension of extensions" [value]="extension.extensionno"> {{extension.extensionno}}</mat-option>
+             </mat-select>
             </mat-form-field>
          <mat-form-field>
-                <input matInput [(ngModel)]="formob" placeholder="Forward To Mobile" name="formob">
-                <mat-error ng-show="myForm.password.$touched && myForm.password.$invalid" required>Required</mat-error>
+                <input matInput [(ngModel)]="formob" placeholder="Forward To Mobile" (ngModelChange)="textAreaEmpty2()" name="formob" [disabled]="disable2">
                  </mat-form-field>
                 
        
     <div mat-dialog-actions >
       <button mat-button (click)="onNoClick()">Exit</button>
-      <button mat-button (click)="addContact()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
+      <button mat-button (click)="addInbound()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
     </div>
     </form>
     

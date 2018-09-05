@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../../../core/modules/shared.module';
 
-import { ReceptionistComponent,ReceptionistDialog } from './receptionist.component';
+import { ReceptionistComponent,ReceptionistDialog,WavDialog } from './receptionist.component';
 
 const routes = [
     {
@@ -15,16 +15,18 @@ const routes = [
 @NgModule({
     declarations: [
         ReceptionistComponent,
-        ReceptionistDialog
+        ReceptionistDialog,
+        WavDialog
     ],
-    entryComponents: [ ReceptionistComponent,ReceptionistDialog],
+    entryComponents: [ ReceptionistComponent,ReceptionistDialog,WavDialog],
     imports     : [
         SharedModule,
         RouterModule.forChild(routes)
     ],
     exports     : [
         ReceptionistComponent,
-        ReceptionistDialog
+        ReceptionistDialog,
+        WavDialog
     ]
 })
 

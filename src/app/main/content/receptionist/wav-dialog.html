@@ -1,0 +1,5 @@
+<form #myForm="ngForm" >
+        <h2 mat-dialog-title>Upload Wav File</h2>
+        <input id="file-field" name="file-field" (change)="uploadFile($event)" type="file" accept=".png,.jpg,.jpeg">
+        <button mat-raised-button (click)="uploadWav()">Upload Wav</button>
+        </form>

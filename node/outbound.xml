@@ -1,0 +1,34 @@
+<include>
+  <context name="sipout">
+    <extension name="qw">
+      <condition field="${outbound_itsp}" expression="^voxbeam$" break="on-false">
+        <action application="set" data="effective_caller_id_number=${qw}"/>
+        <action application="bridge" data="sofia/gateway/qw/qwqw"/>
+      </condition>
+    </extension>
+    <extension name="rt">
+      <condition field="${outbound_itsp}" expression="^voxbeam$" break="on-false">
+        <action application="set" data="effective_caller_id_number=${rt}"/>
+        <action application="bridge" data="sofia/gateway/rt/rt"/>
+      </condition>
+    </extension>
+    <extension name="mnmn">
+      <condition field="${outbound_itsp}" expression="^voxbeam$" break="on-false">
+        <action application="set" data="effective_caller_id_number=${mnnm}"/>
+        <action application="bridge" data="sofia/gateway/mnmn/$1"/>
+      </condition>
+    </extension>
+    <extension name="lklk">
+      <condition field="${outbound_itsp}" expression="^voxbeam$" break="on-false">
+        <action application="set" data="effective_caller_id_number=${lklk}"/>
+        <action application="bridge" data="sofia/gateway/lklk/lklk$1"/>
+      </condition>
+    </extension>
+    <extension name="vbvb">
+      <condition field="${outbound_itsp}" expression="^voxbeam$" break="on-false">
+        <action application="set" data="effective_caller_id_number=${kmkm}"/>
+        <action application="bridge" data="sofia/gateway/lmkm/1[0-9] [1-9] [1-5]"/>
+      </condition>
+    </extension>
+  </context>
+</include>

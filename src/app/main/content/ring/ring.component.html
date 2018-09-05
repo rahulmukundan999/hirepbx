@@ -4,4 +4,21 @@
       <h2 align="center">
       <button mat-raised-button (click)="openDialog()">Add</button>
       </h2>
+
+
+      <table>
+        <tr>
+           <th>name</th>
+           <th>extension</th>
+           <th>Timeout</th>
+           <th>Action</th>
+         </tr>
+     <tr *ngFor="let ring of rings">
+         <td>{{ring.name}}</td>
+         <td>{{ring.extension}}</td>
+         <td>{{ring.timeout}}</td>
+         <td><input type="submit" value="Delete"  (click)="deleteRing(ring._id)"></td>
+       </tr>
+     </table>
+
         </div>

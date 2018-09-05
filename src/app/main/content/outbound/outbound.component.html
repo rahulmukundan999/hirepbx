@@ -4,4 +4,27 @@
       <h2 align="center">
       <button mat-raised-button (click)="openDialog()">Add</button>
       </h2>
+
+
+      <table>
+        <tr>
+           <th>name</th>
+           <th>dial</th>
+           <th>Dial Pattern</th>
+           <th>callerid</th>
+           <th>trunk</th>
+           <th>Action</th>
+         </tr>
+     <tr *ngFor="let outbound of outbounds">
+         <td>{{outbound.name}}</td>
+         <td>{{outbound.dial}}</td>
+         <td>{{outbound.dialpattern}}</td>
+         <td>{{outbound.callerid}}</td>
+         <td>{{outbound.trunk}}</td>
+         <td><input type="submit" value="Delete"  (click)="deleteOutbound(outbound._id)"></td>
+       </tr>
+     </table>
+
+
+
         </div>

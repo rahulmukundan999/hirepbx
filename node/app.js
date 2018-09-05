@@ -11,7 +11,7 @@ var app = express();
 
 const route = require('./routes/route');
 
-mongoose.connect('mongodb://10.136.117.22:27017/contactlist');
+mongoose.connect('mongodb://localhost:27017/contactlist');
 
 mongoose.connection.on('connected',()=>{
     console.log('Connected');

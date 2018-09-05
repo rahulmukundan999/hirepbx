@@ -4,4 +4,27 @@
       <h2 align="center">
       <button mat-raised-button (click)="openDialog()">Add</button>
       </h2>
-        </div>
+
+
+
+  <table>
+    <tr>
+       <th>Name</th>
+       <th>Did Number</th>
+       <th>PlayBack</th>
+       <th>Ringvgroup</th>
+       <th>Forward to Extension</th>
+       <th>forward to mobile</th>
+       <th>Delete</th>
+     </tr>
+ <tr *ngFor="let inbound of inbounds">
+     <td>{{inbound.name}}</td>
+     <td>{{inbound.didnumber}}</td>
+     <td>{{inbound.playback}}</td>
+     <td>{{inbound.ringgroup}}</td>
+     <td>{{inbound.forext}}</td>
+     <td>{{inbound.formob}}</td>
+     <td><input type="submit" value="Delete"  (click)="deleteInbound(inbound._id)"></td>
+   </tr>
+ </table>
+</div>

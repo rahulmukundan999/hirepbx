@@ -6,19 +6,17 @@
             <mat-error ng-show="myForm.extension.$touched && myForm.extension.$invalid">Required</mat-error>
         </mat-form-field>
         <mat-form-field>
-                <mat-select placeholder="Extensions">
-                  <mat-option [value]="true" default>
-                    True
-                  </mat-option>
-                  <mat-option [value]="false">
-                        False
-                      </mat-option>
-                </mat-select>
+          <input matInput [(ngModel)]="extension" placeholder="Extension" name="extension" required>
+              </mat-form-field>
+              <mat-form-field>
+
+                  <input matInput [(ngModel)]="timeout" placeholder="Timeout" name="timeout" placeholder="Timeout - 15 sec">
+
               </mat-form-field>
        
     <div mat-dialog-actions >
       <button mat-button (click)="onNoClick()">Exit</button>
-      <button mat-button (click)="addContact()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
+      <button mat-button (click)="addRing()" [disabled] = "!myForm.valid" cdkFocusInitial>Ok</button>
     </div>
     </form>
     
