@@ -1,0 +1,38 @@
+  <context name="sipout">
+  <extension name="name">
+      <action application="set" data="effective_caller_id_number=${callerid}"/>
+      <action application="bridge" data="sofia/gateway/voxbeam_outbound/TrunkPREFIX$1"/>
+    </condition>
+  </extension>
+  </context>
+</include>
+
+
+
+$1 - dial pattern
+
+
+trunk prefix_dial pattern
+
+voxbeam_outbound - trunk  name
+
+if(trunkprefix)
+that value+$1
+
+if(both)
+trunk prefix+dial pattern
+
+both 0
+$1
+
+if(dialpattern)
+that value only
+
+
+
+^trunkprefix
+
+
+
+
+

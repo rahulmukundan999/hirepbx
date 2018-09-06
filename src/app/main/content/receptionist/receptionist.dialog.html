@@ -22,29 +22,62 @@
                         <tr class="class2">
                           <td>0</td>
                           <td><mat-form-field>
-                                <mat-select placeholder="Extensions" name="one" [(ngModel)]="one">
-                                  <mat-option [value]="nothing">
+                                <mat-select [(ngModel)]="zero" placeholder="Extensions" name="zero">
+                                  <mat-option value="nothing">
                                     Nothing
                                   </mat-option>
-                                  <mat-option [value]="endcall">
+                                  <mat-option value="endcall">
                                         End Call
                                       </mat-option>
-                                      <mat-option [value]="extension">
+                                      <mat-option value="extension">
                                             Connect To Extension
                                           </mat-option>
-                                          <mat-option [value]="ringgroup">
+                                          <mat-option value="ringgroup">
                                                 Connect To RingGroup    
                                               </mat-option>
-                                              <mat-option [value]="queue">
+                                              <mat-option value="queue">
                                                     Connect To Queue
                                                   </mat-option>
-                                                      <mat-option [value]="mail">
+                                                      <mat-option value="mail">
                                                             Transfer To VoiceMail
                                                           </mat-option>
-                                                          <mat-option [value]="prompt">
+                                                          <mat-option value="prompt">
                                                              Repeat Prompt
                                                               </mat-option>
-                                                              <mat-option [value]="did">
+                                                              <mat-option value="did">
+                                                                    Transfer To DID
+                                                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td> 
+                          <td> {{zero}}</td>
+                        </tr>
+                        <tr class="class2">
+                          <td>1</td>
+                          <td><mat-form-field>
+                                <mat-select placeholder="Extensions" name="one" [(ngModel)]="one">
+                                  <mat-option value="nothing">
+                                    Nothing
+                                  </mat-option>
+                                  <mat-option value="endcall">
+                                        End Call
+                                      </mat-option>
+                                      <mat-option value="extension">
+                                            Connect To Extension
+                                          </mat-option>
+                                          <mat-option value="ringgroup">
+                                                Connect To RingGroup    
+                                              </mat-option>
+                                              <mat-option value="queue">
+                                                    Connect To Queue
+                                                  </mat-option>
+                                                      <mat-option value="mail">
+                                                            Transfer To VoiceMail
+                                                          </mat-option>
+                                                          <mat-option value="prompt">
+                                                             Repeat Prompt
+                                                              </mat-option>
+                                                              <mat-option value="did">
                                                                     Transfer To DID
                                                                   </mat-option>
                                 </mat-select>
@@ -53,31 +86,31 @@
                           <td></td>
                         </tr>
                         <tr>
-                          <td>1</td>
+                          <td>2</td>
                           <td> <mat-form-field>
                                 <mat-select placeholder="Extensions" name="two" [(ngModel)]="two">
-                                  <mat-option [value]="nothing">
+                                  <mat-option value="nothing">
                                     Nothing
                                   </mat-option>
-                                  <mat-option [value]="endcall">
+                                  <mat-option value="endcall">
                                         End Call
                                       </mat-option>
-                                      <mat-option [value]="extension">
+                                      <mat-option value="extension">
                                             Connect To Extension
                                           </mat-option>
-                                          <mat-option [value]="ringgroup">
+                                          <mat-option value="ringgroup">
                                                 Connect To RingGroup    
                                               </mat-option>
-                                              <mat-option [value]="queue">
+                                              <mat-option value="queue">
                                                     Connect To Queue
                                                   </mat-option>
-                                                      <mat-option [value]="mail">
+                                                      <mat-option value="mail">
                                                             Transfer To VoiceMail
                                                           </mat-option>
-                                                          <mat-option [value]="prompt">
+                                                          <mat-option value="prompt">
                                                              Repeat Prompt
                                                               </mat-option>
-                                                              <mat-option [value]="did">
+                                                              <mat-option value="did">
                                                                     Transfer To DID
                                                                   </mat-option>
                                 </mat-select>
@@ -85,31 +118,31 @@
                           <td></td>
                         </tr>
                         <tr>
-                                <td>2</td>
+                                <td>3</td>
                                 <td> <mat-form-field>
                                         <mat-select placeholder="Extensions" name="three" [(ngModel)]="three">
-                                          <mat-option [value]="nothing">
+                                          <mat-option value="nothing">
                                             Nothing
                                           </mat-option>
-                                          <mat-option [value]="endcall">
+                                          <mat-option value="endcall">
                                                 End Call
                                               </mat-option>
-                                              <mat-option [value]="extension">
+                                              <mat-option value="extension">
                                                     Connect To Extension
                                                   </mat-option>
-                                                  <mat-option [value]="ringgroup">
+                                                  <mat-option value="ringgroup">
                                                         Connect To RingGroup    
                                                       </mat-option>
-                                                      <mat-option [value]="queue">
+                                                      <mat-option value="queue">
                                                             Connect To Queue
                                                           </mat-option>
-                                                              <mat-option [value]="mail">
+                                                              <mat-option value="mail">
                                                                     Transfer To VoiceMail
                                                                   </mat-option>
-                                                                  <mat-option [value]="prompt">
+                                                                  <mat-option value="prompt">
                                                                      Repeat Prompt
                                                                       </mat-option>
-                                                                      <mat-option [value]="did">
+                                                                      <mat-option value="did">
                                                                             Transfer To DID
                                                                           </mat-option>
                                         </mat-select>
@@ -117,31 +150,31 @@
                                 <td></td>
                               </tr>
                               <tr>
-                                    <td>3</td>
+                                    <td>4</td>
                                     <td> <mat-form-field>
                                             <mat-select placeholder="Extensions" name="four" [(ngModel)]="four">
-                                              <mat-option [value]="nothing">
+                                              <mat-option value="nothing">
                                                 Nothing
                                               </mat-option>
-                                              <mat-option [value]="endcall">
+                                              <mat-option value="endcall">
                                                     End Call
                                                   </mat-option>
-                                                  <mat-option [value]="extension">
+                                                  <mat-option value="extension">
                                                         Connect To Extension
                                                       </mat-option>
-                                                      <mat-option [value]="ringgroup">
+                                                      <mat-option value="ringgroup">
                                                             Connect To RingGroup    
                                                           </mat-option>
-                                                          <mat-option [value]="queue">
+                                                          <mat-option value="queue">
                                                                 Connect To Queue
                                                               </mat-option>
-                                                                  <mat-option [value]="mail">
+                                                                  <mat-option value="mail">
                                                                         Transfer To VoiceMail
                                                                       </mat-option>
-                                                                      <mat-option [value]="prompt">
+                                                                      <mat-option value="prompt">
                                                                          Repeat Prompt
                                                                           </mat-option>
-                                                                          <mat-option [value]="did">
+                                                                          <mat-option value="did">
                                                                                 Transfer To DID
                                                                               </mat-option>
                                             </mat-select>
@@ -149,31 +182,31 @@
                                     <td></td>
                                   </tr>
                                   <tr>
-                                        <td>4</td>
+                                        <td>5</td>
                                         <td> <mat-form-field>
                                                 <mat-select placeholder="Extensions" name="five" [(ngModel)]="five">
-                                                  <mat-option [value]="nothing">
+                                                  <mat-option value="nothing">
                                                     Nothing
                                                   </mat-option>
-                                                  <mat-option [value]="endcall">
+                                                  <mat-option value="endcall">
                                                         End Call
                                                       </mat-option>
-                                                      <mat-option [value]="extension">
+                                                      <mat-option value="extension">
                                                             Connect To Extension
                                                           </mat-option>
-                                                          <mat-option [value]="ringgroup">
+                                                          <mat-option value="ringgroup">
                                                                 Connect To RingGroup    
                                                               </mat-option>
-                                                              <mat-option [value]="queue">
+                                                              <mat-option value="queue">
                                                                     Connect To Queue
                                                                   </mat-option>
-                                                                      <mat-option [value]="mail">
+                                                                      <mat-option value="mail">
                                                                             Transfer To VoiceMail
                                                                           </mat-option>
-                                                                          <mat-option [value]="prompt">
+                                                                          <mat-option value="prompt">
                                                                              Repeat Prompt
                                                                               </mat-option>
-                                                                              <mat-option [value]="did">
+                                                                              <mat-option value="did">
                                                                                     Transfer To DID
                                                                                   </mat-option>
                                                 </mat-select>
@@ -184,28 +217,28 @@
                                                 <td>6</td>
                                                 <td>  <mat-form-field>
                                                         <mat-select placeholder="Extensions" name="six" [(ngModel)]="six">
-                                                          <mat-option [value]="nothing">
+                                                          <mat-option value="nothing">
                                                             Nothing
                                                           </mat-option>
-                                                          <mat-option [value]="endcall">
+                                                          <mat-option value="endcall">
                                                                 End Call
                                                               </mat-option>
-                                                              <mat-option [value]="extension">
+                                                              <mat-option value="extension">
                                                                     Connect To Extension
                                                                   </mat-option>
-                                                                  <mat-option [value]="ringgroup">
+                                                                  <mat-option value="ringgroup">
                                                                         Connect To RingGroup    
                                                                       </mat-option>
-                                                                      <mat-option [value]="queue">
+                                                                      <mat-option value="queue">
                                                                             Connect To Queue
                                                                           </mat-option>
-                                                                              <mat-option [value]="mail">
+                                                                              <mat-option value="mail">
                                                                                     Transfer To VoiceMail
                                                                                   </mat-option>
-                                                                                  <mat-option [value]="prompt">
+                                                                                  <mat-option value="prompt">
                                                                                      Repeat Prompt
                                                                                       </mat-option>
-                                                                                      <mat-option [value]="did">
+                                                                                      <mat-option value="did">
                                                                                             Transfer To DID
                                                                                           </mat-option>
                                                         </mat-select>
@@ -216,28 +249,28 @@
                                                     <td>7</td>
                                                     <td> <mat-form-field>
                                                             <mat-select placeholder="Extensions" name="seven" [(ngModel)]="seven">
-                                                              <mat-option [value]="nothing">
+                                                              <mat-option value="nothing">
                                                                 Nothing
                                                               </mat-option>
-                                                              <mat-option [value]="endcall">
+                                                              <mat-option value="endcall">
                                                                     End Call
                                                                   </mat-option>
-                                                                  <mat-option [value]="extension">
+                                                                  <mat-option value="extension">
                                                                         Connect To Extension
                                                                       </mat-option>
-                                                                      <mat-option [value]="ringgroup">
+                                                                      <mat-option value="ringgroup">
                                                                             Connect To RingGroup    
                                                                           </mat-option>
-                                                                          <mat-option [value]="queue">
+                                                                          <mat-option value="queue">
                                                                                 Connect To Queue
                                                                               </mat-option>
-                                                                                  <mat-option [value]="mail">
+                                                                                  <mat-option value="mail">
                                                                                         Transfer To VoiceMail
                                                                                       </mat-option>
-                                                                                      <mat-option [value]="prompt">
+                                                                                      <mat-option value="prompt">
                                                                                          Repeat Prompt
                                                                                           </mat-option>
-                                                                                          <mat-option [value]="did">
+                                                                                          <mat-option value="did">
                                                                                                 Transfer To DID
                                                                                               </mat-option>
                                                             </mat-select>
@@ -248,28 +281,28 @@
                                                         <td>8</td>
                                                         <td> <mat-form-field>
                                                                 <mat-select placeholder="Extensions" name="eight" [(ngModel)]="eight">
-                                                                  <mat-option [value]="nothing">
+                                                                  <mat-option value="nothing">
                                                                     Nothing
                                                                   </mat-option>
-                                                                  <mat-option [value]="endcall">
+                                                                  <mat-option value="endcall">
                                                                         End Call
                                                                       </mat-option>
-                                                                      <mat-option [value]="extension">
+                                                                      <mat-option value="extension">
                                                                             Connect To Extension
                                                                           </mat-option>
-                                                                          <mat-option [value]="ringgroup">
+                                                                          <mat-option value="ringgroup">
                                                                                 Connect To RingGroup    
                                                                               </mat-option>
-                                                                              <mat-option [value]="queue">
+                                                                              <mat-option value="queue">
                                                                                     Connect To Queue
                                                                                   </mat-option>
-                                                                                      <mat-option [value]="mail">
+                                                                                      <mat-option value="mail">
                                                                                             Transfer To VoiceMail
                                                                                           </mat-option>
-                                                                                          <mat-option [value]="prompt">
+                                                                                          <mat-option value="prompt">
                                                                                              Repeat Prompt
                                                                                               </mat-option>
-                                                                                              <mat-option [value]="did">
+                                                                                              <mat-option value="did">
                                                                                                     Transfer To DID
                                                                                                   </mat-option>
                                                                 </mat-select>
@@ -280,32 +313,33 @@
                                                             <td>9</td>
                                                             <td> <mat-form-field>
                                                                     <mat-select placeholder="Extensions" name="nine" [(ngModel)]="nine">
-                                                                      <mat-option [value]="nothing">
+                                                                      <mat-option value="nothing">
                                                                         Nothing
                                                                       </mat-option>
-                                                                      <mat-option [value]="endcall">
+                                                                      <mat-option value="endcall">
                                                                             End Call
                                                                           </mat-option>
-                                                                          <mat-option [value]="extension">
+                                                                          <mat-option value="extension">
                                                                                 Connect To Extension
                                                                               </mat-option>
-                                                                              <mat-option [value]="ringgroup">
+                                                                              <mat-option value="ringgroup">
                                                                                     Connect To RingGroup    
                                                                                   </mat-option>
-                                                                                  <mat-option [value]="queue">
+                                                                                  <mat-option value="queue">
                                                                                         Connect To Queue
                                                                                       </mat-option>
-                                                                                          <mat-option [value]="mail">
+                                                                                          <mat-option value="mail">
                                                                                                 Transfer To VoiceMail
                                                                                               </mat-option>
-                                                                                              <mat-option [value]="prompt">
+                                                                                              <mat-option value="prompt">
                                                                                                  Repeat Prompt
                                                                                                   </mat-option>
-                                                                                                  <mat-option [value]="did">
+                                                                                                  <mat-option value="did">
                                                                                                         Transfer To DID
                                                                                                       </mat-option>
                                                                     </mat-select>
-                                                                  </mat-form-field></td> 
+                                                                  </mat-form-field>
+                                                                </td> 
                                                             <td></td>
                                                           </tr>
                       </table>

@@ -7,14 +7,53 @@ const Extension1 = require('./models/extension');
 const Inbound = require('./models/inbound');
 const Outbound = require('./models/outbound');
 const Ring = require('./models/ring');
+const mongoose = require('mongoose');
+const Wav = require('./models/wav');
+const Receptionist = require('./models/receptionist');
 var builder = require('xmlbuilder');
 var fs = require('fs');
+var multer = require('multer');
+
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'routes/uploads')
+    },
+    filename: (req, file, cb) => { 
+      cb(null,file.originalname + Date.now() );
+    }
+});
+const upload = multer({storage:storage});
+
+//retrive receptionist
+router.get('/receptionists',(req,res,next)=>{
+    Receptionist.find(function(err,receptionists){
+
+
+       /* var xml= builder.create('include');
+        xml.ele('configuration',{'name':'ivr.conf','description':'IVR menus'})
+        .ele('menus') 
+        .ele('menu',{'name':'demo_ivr','greet-long':'phrase:demo_ivr_main_menu','greet-short':'phrase:demo_ivr_main_menu_short','invalid-sound':'ivr/ivr-that_was_an_invalid_entry.wav','exit-sound':'voicemail/vm-goodbye.wav','timeout':'10000','inter-digit-timeout':'2000','max-failures':'3','digit-len':'4'})
+        .ele('entry',{'action':'menu-exec-app','digits':'1','param':'bridge sofia/$${domain}/888@conference.freeswitch.org'}).up()
+        .ele('entry',{'action':'menu-exec-app','digits':'2','param':'transfer 9996 XML default'}).up()
+        .ele('entry',{'action':'menu-exec-app','digits':'3','param':'transfer 9999 XML default'}).up()
+        .ele('entry',{'action':'menu-exec-app','digits':'4','param':'demo_ivr_submenu'}).up()
+        .ele('entry',{'action':'menu-exec-app','digits':'5','param':'transfer 1234*256 enum'}).up()
+        .up()
+        .up()
+        .up();
+
+        xml.end({ pretty:true})
+        */
 
 
 
 
 
 
+        res.json(receptionists);
+    }) 
+    });
 
 
 //retrive contacts
@@ -23,6 +62,16 @@ Contact.find(function(err,contacts){
     res.json(contacts);
 }) 
 });
+
+
+//retrive wAVS
+router.get('/wavs',(req,res,next)=>{
+    Wav.find(function(err,wavs){
+        res.json(wavs);
+    }) 
+    });
+
+
 
 //retrive rings
 router.get('/rings',(req,res,next)=>{
@@ -243,6 +292,61 @@ router.get('/inbounds',(req,res,next)=>{
     }) 
     });
     
+
+
+
+
+//add receptionist
+router.post('/receptionist',(req,res,next)=>{
+    var newReceptionist = new Receptionist({
+        name: req.body.name,
+        extension: req.body.extension,
+        wav: req.body.wav,
+        zero:req.body.zero,
+        one: req.body.one,
+        two: req.body.two,
+        three: req.body.three,
+        four: req.body.four,
+        five: req.body.five,
+        six: req.body.six,
+        seven: req.body.seven,
+        eight: req.body.eight,
+        nine: req.body.nine
+    })
+    
+
+    newReceptionist.save((err,receptionist)=>{
+        if(err)
+        {
+            res.json({msg:'Failed to add contact'});
+        }
+        else{
+            res.json({msg:'added succcessfully'});;
+            
+        }
+    })
+});
+
+
+
+//add wav
+router.post('/addWav',upload.single('file'),(req,res,next)=>{
+
+if(req.file)
+{
+    console.log(req.file);
+    req.body.photo=req.file.filename;
+}
+var newItem = new Wav();
+newItem.img.data = fs.readFileSync(req.file.path)
+newItem.img.contentType = 'image/jpg';
+newItem.save();
+
+res.json('File Uploaded')
+   
+});
+
+
 
 
 
@@ -497,7 +601,24 @@ router.delete('/outbound/:id',(req,res,next)=>{
     });
     
     
+    //delete receptionist
+router.delete('/receptionist/:id',(req,res,next)=>{
+    Receptionist.remove({_id: req.params.id}, function(err, result){
+        if(err)
+        {
+            res.json(err);
+        }
+        else
+        {
+            res.json(result);
+        }
+    });
+      
+    });
     
+    
+    
+
 
 
 

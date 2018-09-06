@@ -1,5 +1,9 @@
 <form #myForm="ngForm" >
         <h2 mat-dialog-title>Upload Wav File</h2>
-        <input id="file-field" name="file-field" (change)="uploadFile($event)" type="file" accept=".png,.jpg,.jpeg">
+        <input id="file-field" name="file" (change)="uploadFile($event)" type="file">
         <button mat-raised-button (click)="uploadWav()">Upload Wav</button>
         </form>
+
+
+       <h1>cwdcw</h1>
+        <h1 *ngFor="let image of images">{{image.contentType}}</h1>

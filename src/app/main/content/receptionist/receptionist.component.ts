@@ -2,11 +2,13 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSort,MatTableDataSource} from '@angular/material';
 import { ReceptionistService } from './receptionist.service';
 import {Receptionist}  from './receptionist';
+import { Image }  from './image';
 
 @Component({
   selector: 'app-receptionist',
   templateUrl: './receptionist.component.html',
-  styleUrls: ['./receptionist.component.scss']
+  styleUrls: ['./receptionist.component.scss'],
+  providers: [ReceptionistService]
 })
 export class ReceptionistComponent implements OnInit {
 
@@ -55,16 +57,18 @@ export interface DialogData {
     @Component({
       selector: 'receptionist-dialog',
       templateUrl: 'receptionist.dialog.html',
-      styleUrls: ['./receptionist.dialog.scss']
+      styleUrls: ['./receptionist.dialog.scss'],
+      providers: [ReceptionistService]
     })
     export class ReceptionistDialog implements OnInit {
      
     
       receptionists:Receptionist[];
       receptionist:Receptionist;
-            name: string;
-            extension: string;
-            wav: string;
+            name: any;
+            extension: any;
+            wav: any;
+            zero:any;
             one:any;
             two:any;
             three:any;
@@ -88,10 +92,12 @@ export interface DialogData {
 
       addReceptionist()
       {
+  
       const newReceptionist={
         name: this.name,
         extension: this.extension,
         wav: this.wav,
+        zero:this.zero,
         one:this.one,
         two:this.two,
         three:this.three,
@@ -103,26 +109,52 @@ export interface DialogData {
         nine:this.nine
   }
   this.receptionistService.addReceptionist(newReceptionist)
-  .subscribe(inbound=>{
- this.receptionists.push(inbound);
- this.receptionistService.getReceptionists()
-.subscribe(receptionists => this.receptionists = receptionists);
+  .subscribe(receptionist=>{
+ this.receptionists.push(this.receptionist);
   });
+  this.receptionistService.getReceptionists()
+.subscribe(receptionists => this.receptionists = receptionists);
   this.dialogRef.close();
   
 
 }
 
-     
+ 
+ngOnInit() {
+  this.receptionistService.getReceptionists()
+  .subscribe(receptionists => this.receptionists = receptionists);
+
+
 
     
-      ngOnInit() {
- 
+            }
+    deleteReceptionist(id:any)
+{
+  if(confirm("Are you sure"))
+  {
+  var receptionists=this.receptionists;
+  this.receptionistService.deleteReceptionist(id).subscribe(data =>{
 
-                 }
-
-
+    if(data.n==1)
+    {
+      for(var i=0;i<receptionists.length;i++)
+      {
+        if(receptionists[i]._id==id)
+        {
+          receptionists.splice(i,1);
+        }
+      }
+    }
+    this.receptionistService.getReceptionists()
+    .subscribe(receptionists => this.receptionists = receptionists);
+  })
 }
+}
+}     
+
+
+
+
 export interface DialogData1 {
   animal: string;
   name: string;
@@ -136,6 +168,12 @@ export interface DialogData1 {
 })
 export class WavDialog implements OnInit {
  filemain:File;
+ file;File;
+ fd = new FormData();
+ images:Image[];
+ image:Image;
+
+
 
 
   constructor( public dialogRef: MatDialogRef<WavDialog>,
@@ -156,20 +194,18 @@ export class WavDialog implements OnInit {
   {
 console.log(this.filemain);
 this.receptionistService.addWav(this.filemain)
-.subscribe((response) => {
-  console.log('set any success actions...');
+.subscribe();
+this.dialogRef.close();
 
 }
 
 
-);
-
-
-  }
-
 
   ngOnInit() {
 
+
+    this.receptionistService.getWavs()
+    .subscribe(images => this.images = images);
 
              }
 

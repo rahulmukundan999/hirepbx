@@ -10,18 +10,43 @@ import { Observable } from 'rxjs';
 export class ReceptionistService {
 
   constructor(private http: Http) { }
-  addWav(file:File)
+  fd = new FormData();
+  addWav(file)
   {
-    var headers = new Headers();
-    return this.http.post('http://localhost:3000/api/wav',file,{headers:headers}).pipe(
+    
+    
+    this.fd.append('file', file, file.name);
+console.log(this.fd);
+    return this.http.post('http://localhost:3000/api/addWav',this.fd).pipe(
     map(res => res.json()));
   }
-  addReceptionist()
+  getWavs()
   {
+    return this.http.get('http://localhost:3000/api/wavs').pipe(
+      map(res => res.json()));
+
+
+  }
+  addReceptionist(newReceptionist)
+  {
+    
+
+  var headers = new Headers();
+  
+  headers.append('Content-Type','Application/Json');
+  return this.http.post('http://localhost:3000/api/receptionist',newReceptionist,{headers:headers}).pipe(
+  map(res => res.json()));
 
   }
   getReceptionists()
   {
+    return this.http.get('http://localhost:3000/api/receptionists').pipe(
+    map(res => res.json()));
     
+
   }
+deleteReceptionist(id)
+{
+  return this.http.delete('http://localhost:3000/api/receptionist/'+id).pipe(map(res => res.json()));
+}
 }
