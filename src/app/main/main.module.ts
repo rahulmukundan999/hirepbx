@@ -18,6 +18,14 @@ import { FuseSearchBarModule } from '../core/components/search-bar/search-bar.mo
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 
+const routes = [
+    {
+        path     : 'fuse',
+        component: FuseMainComponent
+    }
+];
+
+
 @NgModule({
     declarations: [
         FuseContentComponent,

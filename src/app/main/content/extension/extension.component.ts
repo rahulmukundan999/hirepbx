@@ -2,6 +2,9 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSort,MatTableDataSource} from '@angular/material';
 import { ExtensionService } from './extension.service';
 import { Extension } from './extension';
+import { MatTableModule, MatSortModule } from '@angular/material';
+import { CdkTableModule} from '@angular/cdk/table';
+import {DataSource} from '@angular/cdk/table';
 
 
 @Component({
@@ -11,6 +14,12 @@ import { Extension } from './extension';
   providers: [ExtensionService]
 })
 export class ExtensionComponent implements OnInit {
+
+  dataSource;
+  displayedColumns=['extensionno','displayname','outboundcid','password','email','action'];
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   extensions: Extension[];
   extension: Extension;
@@ -29,6 +38,8 @@ export class ExtensionComponent implements OnInit {
       console.log('The dialog was closed');
       this.extensionService.getExtensions()
       .subscribe(extensions => this.extensions = extensions);
+      this.extensionService.getExtensions()
+      .subscribe(extensions =>  this.dataSource=new MatTableDataSource(extensions));
 
 
      
@@ -39,7 +50,8 @@ export class ExtensionComponent implements OnInit {
     this.extensionService.getExtensions()
     .subscribe(extensions => this.extensions = extensions);
 
-
+    this.extensionService.getExtensions()
+    .subscribe(extensions =>  this.dataSource=new MatTableDataSource(extensions));
   
       
               }
@@ -62,6 +74,7 @@ export class ExtensionComponent implements OnInit {
       }
       this.extensionService.getExtensions()
       .subscribe(extensions => this.extensions = extensions);
+      this.dataSource=new MatTableDataSource(extensions);
     })
   }
 }

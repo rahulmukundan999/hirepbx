@@ -8,6 +8,8 @@ import 'hammerjs';
 import { SharedModule } from './core/modules/shared.module';
 import { AppComponent } from './app.component';
 import { FuseMainModule } from './main/main.module';
+import {FuseMainComponent} from './main/main.component'
+import { loginModule} from './login/login.module';
 import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { FuseConfigService } from './core/services/config.service';
 import { FuseNavigationService } from './core/components/navigation/navigation.service';
@@ -22,10 +24,16 @@ import { receptionistModule } from './main/content/receptionist/receptionist.mod
 import { TranslateModule } from '@ngx-translate/core';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
+import { DialogOverviewExampleDialog } from './app.component';
+
 const appRoutes: Routes = [
     {
         path      : '**',
         redirectTo: 'sample'
+    },
+    {
+    path     : 'login',
+    redirectTo: 'login'
     },
     {
         path      : 'account',
@@ -59,8 +67,8 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent
-    ],
+        AppComponent, DialogOverviewExampleDialog
+    ], entryComponents: [AppComponent, DialogOverviewExampleDialog],
     imports     : [
         BrowserModule,
         HttpModule,
@@ -80,7 +88,9 @@ const appRoutes: Routes = [
         receptionistModule,
         MatTableModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        loginModule
+       
     ],
     providers   : [
         FuseSplashScreenService,
