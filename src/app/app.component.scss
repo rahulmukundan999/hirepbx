@@ -3,4 +3,23 @@
     background-image:url('/assets/images/img.jpg');
     height:100%;
     width:100%;
+    position:fixed;
+    padding:0;
+    margin:0;
+  
+    top:0;
+    left:0;
   }
+.class1
+{
+  position:fixed;
+  padding:0;
+  margin:0;
+
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+  background:rgba(255,255,255,0.5);
+}

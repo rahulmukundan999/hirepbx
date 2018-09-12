@@ -2,13 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LoginComponent} from './login.component';
 import { FuseMainModule } from '../main/main.module';
+import {FuseMainComponent} from '../main/main.component';
+import {extensionModule} from '../main/content/extension/extension.module'
 
 
 const routes = [
-    {
-        path     : 'login',
+{
+   path      : '',
         component: LoginComponent
-    }
+},
+{
+    path:'main',
+    component:FuseMainComponent
+}
 ];
 
 @NgModule({
@@ -18,7 +24,7 @@ const routes = [
     entryComponents: [LoginComponent],
     imports     : [
         RouterModule.forChild(routes),
-        FuseMainModule
+        FuseMainModule,extensionModule
     ],
     exports     : [
         LoginComponent

@@ -20,9 +20,10 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
 
 const routes = [
     {
-        path     : 'fuse',
-        component: FuseMainComponent
-    }
+        path     : 'main',
+        component: FuseMainComponent,
+  
+}
 ];
 
 

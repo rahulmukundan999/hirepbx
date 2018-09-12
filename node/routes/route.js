@@ -94,7 +94,7 @@ router.get('/rings',(req,res,next)=>{
         .ele('action',{'application':'set','data':'call_timeout='+rings[i].timeout}).up()
         .ele('user',{'id':rings[i].extension,'type':'pointer'}).up()
         .up()
-        .up();
+        .up();``
         }
         xml.end({ pretty: true});
              

@@ -41,6 +41,7 @@ export class FuseMainComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
+        
     }
 
     ngOnDestroy()

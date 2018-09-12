@@ -8,10 +8,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  playback:any;
+  animal: string;
+  name: string;
+
   constructor( private router: Router) { }
 
   ngOnInit() {
-   
+
+    alert("hello");
+    
   }
 
 }

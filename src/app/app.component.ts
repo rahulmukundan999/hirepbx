@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject,NgZone } from '@angular/core';
 import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -21,11 +21,27 @@ export class AppComponent implements OnInit
     playback:any;
     animal: string;
     name: string;
+    password:string;
+   dis : any;
+   log = true;
+   on()
+   {
+     if(this.name=="rahul" && this.password=="rahul")
+     {
+       this.dis = true;
+       
+     }
+     else
+     {
+       this.dis = false;
+       alert('Username Or Password Not Correct');
+     }
+   }
     
     constructor(
         private fuseSplashScreen: FuseSplashScreenService,
         private translate: TranslateService, private route: ActivatedRoute,
-        private router: Router,public dialog: MatDialog
+        private router: Router,public dialog: MatDialog,public ngZone:NgZone
     )
     {
         // Add languages
@@ -40,8 +56,8 @@ export class AppComponent implements OnInit
 
 ngOnInit()
 {
-
-    
+  
+  // this.router.navigate(['/extension']);
 }
 
 

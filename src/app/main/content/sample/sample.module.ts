@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../../core/modules/shared.module';
 
 import { FuseSampleComponent } from './sample.component';
+import { FuseMainModule } from '../../main.module';
 
 const routes = [
     {

@@ -5,6 +5,7 @@ import { SharedModule } from '../../../core/modules/shared.module';
 
 import { InboundComponent,InboundDialog } from './inbound.component';
 
+
 const routes = [
     {
         path     : 'inbound',

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,18 +23,17 @@ import { ringModule } from './main/content/ring/ring.module';
 import { receptionistModule } from './main/content/receptionist/receptionist.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
-
 import { DialogOverviewExampleDialog } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { AccountComponent } from './main/content/account/account.component';
 
 const appRoutes: Routes = [
+ 
     {
         path      : '**',
         redirectTo: 'sample'
     },
-    {
-    path     : 'login',
-    redirectTo: 'login'
-    },
+   
     {
         path      : 'account',
         redirectTo: 'account'

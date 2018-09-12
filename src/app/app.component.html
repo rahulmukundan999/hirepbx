@@ -1,1 +1,17 @@
-<fuse-main></fuse-main>
+
+<div *ngIf="log">
+    <form #myForm="ngForm" >
+        <h2 mat-dialog-title>Add RingGroup</h2>
+        
+       <mat-form-field>
+            <input matInput [(ngModel)]="name" placeholder="Name" name="name" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [(ngModel)]="password" placeholder="Password" name="password" required>
+        </mat-form-field>
+
+        <button mat-raised-button (click)="on()">Login</button>
+        <div *ngIf="dis" class="class1" >
+
+          <fuse-main></fuse-main>
+</div>
