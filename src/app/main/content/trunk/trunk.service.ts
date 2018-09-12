@@ -29,7 +29,7 @@ addTrunk(newTrunk)
 
 deleteTrunk(id)
 {
-  return this.http.delete('http://159.89.239.168:3000/api/trunk/'+id).pipe(map(res => res.json()));
+  return this.http.delete('http://104.248.51.139:3000/api/trunk/'+id).pipe(map(res => res.json()));
 }
 
 
